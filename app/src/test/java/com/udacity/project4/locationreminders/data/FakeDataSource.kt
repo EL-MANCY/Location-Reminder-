@@ -12,6 +12,7 @@ class FakeDataSource : ReminderDataSource {
     //ITS USED WHEN THE LOADING REMINDERS FAILS SO IT RETURNS ITS VALUE TO FALSE TO RESET IT AFTER BEEM USED!!
     // ->  ITS USED IN "loadReminders_DataSource_Error" TEST in the REMINDERLISTVIEWMODELTEST CLASS (IT DO Verify Snackbar error message value is triggered when loading reminders fails)
     /////// A fake data source to act as a double to the real data source
+    //as the fake repo store the test data not the real data as the user dont need to know about the test data
     fun setReturnError(value: Boolean) {
         shouldReturnError = value
     }
