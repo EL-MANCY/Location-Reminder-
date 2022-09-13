@@ -6,26 +6,25 @@ import java.util.LinkedHashMap
 
 //Use FakeDataSource that acts as a test double to the LocalDataSource
 class FakeDataSource : ReminderDataSource {
-    //USED TO CHECK THE ERROR
+    //GOAL: REACH THAT THE SNACK BOX IN THE RemindersListViewModelTest CLASS IN THE ROW NUMBER '83' HAS A VALUE OF TRUE OR A VALUE OF TEST EXCEPTION
+    //WE CAN CHANGE THE SENTENCE OF TEST EXCEPTION TO "NO REMINDERS" AS IT IS THE SAME BECAUSE WHAT I MEANT WITH TEST EXCEPTION WAS THAT THERE IS NO REMINDER TO RETURN SO THATS FOR ME IS A EXCEPTION
+    //SO WE CAN CHANGE IT TI TO NO REMINDERS TO BE RETURNED !!!
+
+    //First: i made a var which has a vak=lue of false
     private var shouldReturnError = false
-    //update error flag
-    //ITS USED WHEN THE LOADING REMINDERS FAILS SO IT RETURNS ITS VALUE TO FALSE TO RESET IT AFTER BEEM USED!!
-    // ->  ITS USED IN "loadReminders_DataSource_Error" TEST in the REMINDERLISTVIEWMODELTEST CLASS (IT DO Verify Snackbar error message value is triggered when loading reminders fails)
-    /////// A fake data source to act as a double to the real data source
-    //as the fake repo store the test data not the real data as the user dont need to know about the test data
+
     fun setReturnError(value: Boolean) {
+        //SECOND: that function is used to set the value of the variable "shouldReturnError" AND its used in row 83 in the next class "RemindersListViewModelTest"
         shouldReturnError = value
     }
 
     private val fakeData: LinkedHashMap<String, ReminderDTO> = LinkedHashMap()
 //Return the reminders
     override suspend fun getReminders(): Result<List<ReminderDTO>> {
-    // IN HERE THAT FUNCTION GETS THE REMINDERS SO IF "shouldReturnError" HAVE A VALUE THEN THE LOADING REMINDERS HAD FAILED
+    //THIRD: here we will change the Test exception to no reminders (its for me the same but i think u r right its more obvious when we say no reminders so we can return empty list
         if (shouldReturnError) {
-            //THE ERORR "Test exception" AS THERE IS NO REMINDERS TO RETURN SO THE TEST WILL FAIL
-            //I WROTE "Test exception" AS WHEN THE REMINDERS ARE NOT TRIGGERED THERE WILL BE NOOO REMINDERS SO THE TEST WILL FAIL "ITS A TEST EXCEPTION!!!!"
-            //DONT KNOW WHAT IS NOT OBVIOUS IN THE MESSAGE
-            return Result.Error("Test exception")
+        //PLEASE GO TO RemindersListViewModelTest CLASS ROW 81
+            return Result.Error("NO REMINDERS")
         }
 
         return Result.Success(fakeData.values.toList())

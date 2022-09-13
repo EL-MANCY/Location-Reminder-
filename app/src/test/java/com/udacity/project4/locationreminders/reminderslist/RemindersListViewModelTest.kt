@@ -79,7 +79,7 @@ class RemindersListViewModelTest {
     // Verify Snackbar error message value is triggered when loading reminders fails
     @Test
     fun loadReminders_DataSource_Error() = runBlockingTest {
-        // GIVEN: the dataSource return errors.
+        // GIVEN: the dataSource return errors. //FOURTH:  HERE WE USED THE FUNCTION TO GIVE IT A VALUE OF TRUE
         fakeDataSource.setReturnError(true)
 
         // WHEN load reminders
@@ -87,9 +87,13 @@ class RemindersListViewModelTest {
 
         // THEN
         // + Show error message in SnackBar
-        assertThat(viewModel.showSnackBar.getOrAwaitValue(), `is`("Test exception"))
+        //FIFTH: WE CHECK IF THE VALUE OF showSnackBar IS "NO REMINDERS"
+        assertThat(viewModel.showSnackBar.getOrAwaitValue(), `is`("NO REMINDERS"))
         // + showNoData is true
+        //SIXTH:OR ITS TRUE
         assertThat(viewModel.showNoData.getOrAwaitValue(), `is`(true))
+
+        //SEVENTH:WE REACHED THE GOAL: IF ITS TRUE THAT MEAN THAT REMINDERS HAVE BEEN LOADED ELSE THERE IS NO REMINDERS TO BE LOADED
     }
 //test if no reminder are there
     @Test
