@@ -10,7 +10,7 @@ class FakeDataSource : ReminderDataSource {
     private var shouldReturnError = false
     //update error flag
     //ITS USED WHEN THE LOADING REMINDERS FAILS SO IT RETURNS ITS VALUE TO FALSE TO RESET IT AFTER BEEM USED!!
-    // ->  ITS USED IN "loadReminders_DataSource_Error" TEST in the REMINDERLISTVIEWMODELTEST CLASS
+    // ->  ITS USED IN "loadReminders_DataSource_Error" TEST in the REMINDERLISTVIEWMODELTEST CLASS (IT DO Verify Snackbar error message value is triggered when loading reminders fails)
     fun setReturnError(value: Boolean) {
         shouldReturnError = value
     }
