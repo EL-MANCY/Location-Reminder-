@@ -127,11 +127,12 @@ class SaveReminderViewModelTest {
         // WHEN the data entered
         val res = viewModel.validateEnteredData(reminderData)
 
-        // THEN assert
+        // THEN assert  and check the title
         MatcherAssert.assertThat(
             viewModel.showSnackBarInt.getOrAwaitValue(),
             Matchers.`is`(R.string.err_select_location)
         )
+        //CHECK IF THE RES IS FALSE
         MatcherAssert.assertThat(res, `is`(false))
     }
 
@@ -141,14 +142,16 @@ class SaveReminderViewModelTest {
         val reminderData = DummyReminderData.reminderDataItem.copy()
         reminderData.location = ""
 
-        // WHEN
+        // WHEN the data entered
         val res = viewModel.validateEnteredData(reminderData)
 
-        // THEN
+        // THEN assert  and check the title
         MatcherAssert.assertThat(
             viewModel.showSnackBarInt.getOrAwaitValue(),
             Matchers.`is`(R.string.err_select_location)
         )
+        //CHECK IF THE RES IS FALSE
+
         MatcherAssert.assertThat(res, `is`(false))
     }
 
@@ -157,7 +160,7 @@ class SaveReminderViewModelTest {
         // GIVEN and //WHEN
         val res = viewModel.validateEnteredData(DummyReminderData.reminderDataItem)
 
-        // THEN
+        // THEN CHECK THAT THE RES IS FALSE
         MatcherAssert.assertThat(res, `is`(true))
     }
 }

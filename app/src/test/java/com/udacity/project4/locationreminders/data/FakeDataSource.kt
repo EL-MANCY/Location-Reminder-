@@ -20,7 +20,9 @@ class FakeDataSource : ReminderDataSource {
     private val fakeData: LinkedHashMap<String, ReminderDTO> = LinkedHashMap()
 //Return the reminders
     override suspend fun getReminders(): Result<List<ReminderDTO>> {
+    // IN HERE THAT FUNCTION GETS THE REMINDERS SO IF "shouldReturnError" HAVE A VALUE THEN THE LOADING REMINDERS HAD FAILED
         if (shouldReturnError) {
+            //THE ERORR "Test exception" AS THERE IS NO REMINDERS TO RETURN SO THE TEST WILL FAIL
             return Result.Error("Test exception")
         }
 
