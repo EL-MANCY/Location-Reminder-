@@ -6,11 +6,12 @@ import java.util.LinkedHashMap
 
 //Use FakeDataSource that acts as a test double to the LocalDataSource
 class FakeDataSource : ReminderDataSource {
-
+    /////// A fake data source to act as a double to the real data source
     private var shouldReturnError = false
     //update error flag
     //ITS USED WHEN THE LOADING REMINDERS FAILS SO IT RETURNS ITS VALUE TO FALSE TO RESET IT AFTER BEEM USED!!
     // ->  ITS USED IN "loadReminders_DataSource_Error" TEST in the REMINDERLISTVIEWMODELTEST CLASS (IT DO Verify Snackbar error message value is triggered when loading reminders fails)
+    /////// A fake data source to act as a double to the real data source
     fun setReturnError(value: Boolean) {
         shouldReturnError = value
     }
