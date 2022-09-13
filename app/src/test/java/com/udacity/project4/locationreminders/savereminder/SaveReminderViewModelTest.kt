@@ -157,7 +157,7 @@ class SaveReminderViewModelTest {
 
     @Test
     fun validateEnteredData_ReturnTrue() {
-        // GIVEN and //WHEN
+        // GIVEN THE ENTERED DATA
         val res = viewModel.validateEnteredData(DummyReminderData.reminderDataItem)
 
         // THEN CHECK THAT THE RES IS FALSE
