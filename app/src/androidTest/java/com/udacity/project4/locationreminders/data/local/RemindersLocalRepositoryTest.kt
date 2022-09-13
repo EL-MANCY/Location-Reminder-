@@ -54,7 +54,7 @@ class RemindersLocalRepositoryTest {
 
         // WHEN - Get the reminder by id from the local repo.
         val result = localRepository.getReminder(reminder.id)
-
+//THEN check that the result is not null
         assertThat(result, not(nullValue()))
         result as Result.Success
         assertThat(result.data.id, `is`(reminder.id))
@@ -70,7 +70,7 @@ class RemindersLocalRepositoryTest {
         // WHEN load non exist reminder by id
         val result = localRepository.getReminder("1")
 
-        // THEN
+        // THEN check if the result succeeded is false
         Assert.assertThat(result.succeeded, `is`(false))
         result as Result.Error
         assertThat(result.message, Matchers.`is`("Reminder not found!"))

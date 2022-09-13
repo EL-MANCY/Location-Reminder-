@@ -128,6 +128,7 @@ class RemindersActivityTest :
 
     @Test
     fun addReminder_verifyNewItemInTheList() {
+        //GIVEN the title and description
         val typingTitle = "Title espresso"
         val typingDescription = "Description espresso"
         val activityScenario = ActivityScenario.launch(RemindersActivity::class.java)

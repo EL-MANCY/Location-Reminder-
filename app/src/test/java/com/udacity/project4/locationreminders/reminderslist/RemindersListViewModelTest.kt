@@ -30,14 +30,14 @@ class RemindersListViewModelTest {
     private lateinit var fakeDataSource: FakeDataSource
 
     private lateinit var viewModel: RemindersListViewModel
-
+    // setup before running each test
     @Before
     fun setUp() {
         stopKoin()
         fakeDataSource = FakeDataSource()
         viewModel = RemindersListViewModel(ApplicationProvider.getApplicationContext(), fakeDataSource)
     }
-
+    // Verify showLoading value is set to true when loading, then false after loading
     @Test
     fun loadReminders_ShowLoading() = runBlockingTest {
         // Pause dispatcher so you can verify initial values.
@@ -76,7 +76,7 @@ class RemindersListViewModelTest {
         // + showNoData is false
         assertThat(viewModel.showNoData.getOrAwaitValue(), `is`(false))
     }
-
+    // Verify Snackbar error message value is triggered when loading reminders fails
     @Test
     fun loadReminders_DataSource_Error() = runBlockingTest {
         // GIVEN: the dataSource return errors.
@@ -91,7 +91,7 @@ class RemindersListViewModelTest {
         // + showNoData is true
         assertThat(viewModel.showNoData.getOrAwaitValue(), `is`(true))
     }
-
+//test if no reminder are there
     @Test
     fun loadReminders_resultSuccess_noReminders() = runBlockingTest {
         // GIVEN no items

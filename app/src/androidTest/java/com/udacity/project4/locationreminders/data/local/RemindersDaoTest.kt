@@ -43,7 +43,7 @@ class RemindersDaoTest {
 
     @After
     fun closeDb() = database.close()
-
+//
     @Test
     fun saveReminder_getReminderById_verifyCorrectData() = runBlockingTest {
         // GIVEN - Insert a reminder.

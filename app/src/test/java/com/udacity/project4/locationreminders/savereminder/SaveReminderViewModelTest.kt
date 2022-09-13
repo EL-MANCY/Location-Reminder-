@@ -45,13 +45,14 @@ class SaveReminderViewModelTest {
     @Before
     fun setUp() {
         stopKoin()
+        // initialize firebase app
         fakeDataSource = FakeDataSource()
 
         app = ApplicationProvider.getApplicationContext()
-
+        // initialize viewModel with mockApp and fake repo
         viewModel = SaveReminderViewModel(app, fakeDataSource)
     }
-
+//check if New Reminder created and values assigned to view model
     @Test
     fun saveReminder_ShowLoading() = runBlockingTest {
         // Pause dispatcher so you can verify initial values.
@@ -72,9 +73,11 @@ class SaveReminderViewModelTest {
 
     @Test
     fun saveReminder_Success() {
+        // GIVEN - New Reminder created and values assigned to view model
+
         // WHEN save reminder
         viewModel.saveReminder(DummyReminderData.reminderDataItem)
-
+        //THEN - assert showToast value
         MatcherAssert.assertThat(
             viewModel.showToast.getOrAwaitValue(), `is`(app.getString(R.string.reminder_saved))
         )
@@ -87,10 +90,10 @@ class SaveReminderViewModelTest {
         val reminderData = DummyReminderData.reminderDataItem.copy()
         reminderData.title = ""
 
-        // WHEN
+        // WHEN data is entered to the reminder
         val res = viewModel.validateEnteredData(reminderData)
 
-        // THEN
+        // THEN assert  and check the title
         MatcherAssert.assertThat(
             viewModel.showSnackBarInt.getOrAwaitValue(),
             `is`(R.string.err_enter_title)
@@ -104,10 +107,10 @@ class SaveReminderViewModelTest {
         val reminderData = DummyReminderData.reminderDataItem.copy()
         reminderData.title = null
 
-        // WHEN
+        // WHEN the data is validated
         val res = viewModel.validateEnteredData(reminderData)
 
-        // THEN
+        // THEN assert
         MatcherAssert.assertThat(
             viewModel.showSnackBarInt.getOrAwaitValue(),
             `is`(R.string.err_enter_title)
@@ -121,10 +124,10 @@ class SaveReminderViewModelTest {
         val reminderData = DummyReminderData.reminderDataItem.copy()
         reminderData.location = null
 
-        // WHEN
+        // WHEN the data entered
         val res = viewModel.validateEnteredData(reminderData)
 
-        // THEN
+        // THEN assert
         MatcherAssert.assertThat(
             viewModel.showSnackBarInt.getOrAwaitValue(),
             Matchers.`is`(R.string.err_select_location)
@@ -151,7 +154,7 @@ class SaveReminderViewModelTest {
 
     @Test
     fun validateEnteredData_ReturnTrue() {
-        // GIVEN
+        // GIVEN and //WHEN
         val res = viewModel.validateEnteredData(DummyReminderData.reminderDataItem)
 
         // THEN
