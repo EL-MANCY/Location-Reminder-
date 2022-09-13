@@ -23,6 +23,8 @@ class FakeDataSource : ReminderDataSource {
     // IN HERE THAT FUNCTION GETS THE REMINDERS SO IF "shouldReturnError" HAVE A VALUE THEN THE LOADING REMINDERS HAD FAILED
         if (shouldReturnError) {
             //THE ERORR "Test exception" AS THERE IS NO REMINDERS TO RETURN SO THE TEST WILL FAIL
+            //I WROTE "Test exception" AS WHEN THE REMINDERS ARE NOT TRIGGERED THERE WILL BE NOOO REMINDERS SO THE TEST WILL FAIL "ITS A TEST EXCEPTION!!!!"
+            //DONT KNOW WHAT IS NOT OBVIOUS IN THE MESSAGE
             return Result.Error("Test exception")
         }
 
