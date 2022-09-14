@@ -9,9 +9,9 @@ class FakeDataSource : ReminderDataSource {
 
 
     private var isempty = false
-
+//SCENARIO: fake data source acts as a double to the real data source
     fun setReturnEmpty(value: Boolean) {
-        //SECOND: that function is used to set the value of the variable "shouldReturnError" AND its used in row 83 in the next class "RemindersListViewModelTest"
+
         isempty = value
     }
 
