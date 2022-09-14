@@ -25,7 +25,11 @@ class FakeDataSource : ReminderDataSource {
       //okay i cant explain more than that believe me i studied well i made the project well, i asked my friends non of them went to all of that questions
     //so if u see that i am wrong to send an exception then we can send an empty list as u suggested
         if (shouldReturnError) {
-
+//why is it an exception? right? thats ur question // at the RemindersLocalRepository class in the get reminder function there is a comment above that says "     * @return Result the holds a Success with all the reminders or an Error object with the error message"
+            // THEN NOW U ARE ASKING WHY ITS IS AN EXCEPTION, ITS NOT MY IDEA ITS THE STARTER PROJECT COMMENT IDEA NOT MINE
+            // AND I MADE WHAT WAS WRITTEN IN THE COMMENTS IN THE STARTER PROJECT
+            //I SAID BEFORE ITS AN EXCEPTION BECAUSE NO REMINDERS TO RETURN AND ITS BAD EXPERIENCE TO RETURN EMPTY LIST IF THERE WAS A ERROR
+            //THAT WHAT I CAN EXPLAIN IF IT ISNOT CLEAR PLEASE LET ANOTHER REVIEWER TO REVIEW MY PROJECT  
             return Result.Error("NO REMINDERS")
 
         }
