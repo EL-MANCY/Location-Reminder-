@@ -87,8 +87,8 @@ class RemindersListViewModelTest {
 
         // THEN
         // + Show error message in SnackBar
-        //FIFTH: WE CHECK IF THE VALUE OF showSnackBar IS "NO REMINDERS"
-        assertThat(viewModel.showSnackBar.getOrAwaitValue(), `is`("NO REMINDERS"))
+        //FIFTH: WE CHECK IF THE VALUE OF showSnackBar IS "null"
+        assertThat(viewModel.showSnackBar.getOrAwaitValue(), null)
         // + showNoData is true
         //SIXTH:OR ITS TRUE
         assertThat(viewModel.showNoData.getOrAwaitValue(), `is`(true))
