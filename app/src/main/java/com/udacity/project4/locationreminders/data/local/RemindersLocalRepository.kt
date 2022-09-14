@@ -49,6 +49,8 @@ class RemindersLocalRepository(
      * @param id to be used to get the reminder
      * @return Result the holds a Success object with the Reminder or an Error object with the error message
      */
+    //First: the comment above was a comment in the starter project says result hold a reminder or an ERROR WITH ERROR MESSAGE!!
+    //so to do that if it wasnot null we are on success if not so give an error
     override suspend fun getReminder(id: String): Result<ReminderDTO> = withContext(ioDispatcher) {
         wrapEspressoIdlingResource {
             try {
