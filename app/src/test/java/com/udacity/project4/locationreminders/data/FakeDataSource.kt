@@ -13,7 +13,7 @@ class FakeDataSource : ReminderDataSource {
     //First: i made a var which has a vak=lue of false
     private var isEmptyList = false
 
-    fun setReturnError(value: Boolean) {
+    fun setReturnEmptylist(value: Boolean) {
         //SECOND: that function is used to set the value of the variable "shouldReturnError" AND its used in row 83 in the next class "RemindersListViewModelTest"
         isEmptyList = value
     }
