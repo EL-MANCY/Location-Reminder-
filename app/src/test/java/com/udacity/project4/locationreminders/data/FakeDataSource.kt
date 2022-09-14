@@ -21,7 +21,7 @@ class FakeDataSource : ReminderDataSource {
 
         if (isempty) {
 
-            return Result.Error("NO REMINDERS")
+            return Result.Success(emptyList())
 
         }
 
