@@ -11,11 +11,11 @@ class FakeDataSource : ReminderDataSource {
     //SO WE CAN CHANGE IT TI TO NO REMINDERS TO BE RETURNED !!!
 
     //First: i made a var which has a vak=lue of false
-    private var isEmptyList = false
+    private var shouldReturnError = false
 
-    fun setReturnEmptylist(value: Boolean) {
+    fun setReturnError(value: Boolean) {
         //SECOND: that function is used to set the value of the variable "shouldReturnError" AND its used in row 83 in the next class "RemindersListViewModelTest"
-        isEmptyList = value
+        shouldReturnError = value
     }
 
     private val fakeData: LinkedHashMap<String, ReminderDTO> = LinkedHashMap()
@@ -24,9 +24,9 @@ class FakeDataSource : ReminderDataSource {
     //THIRD: here we will change the Test exception to no reminders (its for me the same but i think u r right its more obvious when we say no reminders so we can return empty list
       //okay i cant explain more than that believe me i studied well i made the project well, i asked my friends non of them went to all of that questions
     //so if u see that i am wrong to send an exception then we can send an empty list as u suggested
-        if (isEmptyList) {
+        if (shouldReturnError) {
 
-            return Result.Success(emptyList())
+            return Result.Error("NO REMINDERS")
 
         }
 
@@ -38,7 +38,7 @@ class FakeDataSource : ReminderDataSource {
     }
 //return the reminder with the id
     override suspend fun getReminder(id: String): Result<ReminderDTO> {
-        if (isEmptyList) {
+        if (shouldReturnError) {
             return Result.Error("An unknown error occurred!")
         }
 

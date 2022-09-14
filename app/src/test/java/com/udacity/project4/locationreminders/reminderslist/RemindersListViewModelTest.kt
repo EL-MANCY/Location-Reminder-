@@ -80,7 +80,7 @@ class RemindersListViewModelTest {
     @Test
     fun loadReminders_DataSource_Error() = runBlockingTest {
         // GIVEN: the dataSource return errors. //FOURTH:  HERE WE USED THE FUNCTION TO GIVE IT A VALUE OF TRUE
-        fakeDataSource.setReturnEmptylist(true)
+        fakeDataSource.setReturnError(true)
 
         // WHEN load reminders
         viewModel.loadReminders()
