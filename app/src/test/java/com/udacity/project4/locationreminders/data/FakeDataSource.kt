@@ -21,10 +21,16 @@ class FakeDataSource : ReminderDataSource {
 
         if (isempty) {
 
-            return Result.Success(emptyList())
+           // return Result.Success(emptyList())
+// AS IT WAS DECLARED IN THE RemindersLocalRepository.KT CLASS IN A COMMENT THAT IT WOULD BE AN SUCCESS WITH THE REMINDERS OR AN ERROR WITH A """ERROR MESSAGE"""
+//MY ERROR MESSAGE WAS """TEST EXCEPTION"""
+//MAYBE BECAUSE ENGLISH ISNT MY MOTHER LANGUAGE I EXPLAINED THE ERROR MESSAGE AS AN EXCEPTION THATS WHY I WROTE """TEST EXCEPTION"""
+//IT WOULD HAVE BEEN BETTER IF I SAID """NO REMINDERS FOUND""" OR SENT AN EMPTY LIST
+            return Result.Error("TEST EXCEPTION")
+
 
         }
-
+//HERE WE RETURN SUCCESS
         return Result.Success(fakeData.values.toList())
     }
 //save the reminder
