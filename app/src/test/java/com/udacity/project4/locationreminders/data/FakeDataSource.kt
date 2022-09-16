@@ -18,9 +18,10 @@ class FakeDataSource : ReminderDataSource {
     override suspend fun getReminders(): Result<List<ReminderDTO>> {
         if (isempty) {
 
-           // return Result.Success(emptyList())
 //No reminders to be triggered so sent an error message
-            return Result.Error("EXCEPTION")
+            return Result.Error("TEST EXCEPTION")
+            // return Result.Success(emptyList())
+
         }
 //HERE WE RETURN SUCCESS
         return Result.Success(fakeData.values.toList())
