@@ -9,27 +9,18 @@ class FakeDataSource : ReminderDataSource {
 
 
     private var isempty = false
-//SCENARIO: fake data source acts as a double to the real data source
     fun setReturnEmpty(value: Boolean) {
-
         isempty = value
     }
 
     private val fakeData: LinkedHashMap<String, ReminderDTO> = LinkedHashMap()
 //Return the reminders
     override suspend fun getReminders(): Result<List<ReminderDTO>> {
-
         if (isempty) {
 
            // return Result.Success(emptyList())
-
-// AS IT WAS DECLARED IN THE RemindersLocalRepository.KT CLASS IN A COMMENT THAT IT WOULD BE AN SUCCESS WITH THE REMINDERS OR AN ERROR WITH A """ERROR MESSAGE"""
-//MY ERROR MESSAGE WAS """EXCEPTION"""
-//MAYBE BECAUSE ENGLISH ISNT MY MOTHER LANGUAGE I EXPLAINED THE ERROR MESSAGE AS AN EXCEPTION THATS WHY I WROTE """EXCEPTION"""
-//IT WOULD HAVE BEEN BETTER IF I SAID """NO REMINDERS FOUND""" OR SENT AN EMPTY LIST
+//No reminders to be triggered so sent an error message
             return Result.Error("EXCEPTION")
-
-
         }
 //HERE WE RETURN SUCCESS
         return Result.Success(fakeData.values.toList())
@@ -43,7 +34,6 @@ class FakeDataSource : ReminderDataSource {
         if (isempty) {
             return Result.Error("An unknown error occurred!")
         }
-
         val reminder = fakeData[id]
         if (reminder != null) {
             return Result.Success(reminder)
