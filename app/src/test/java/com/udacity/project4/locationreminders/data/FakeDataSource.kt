@@ -19,7 +19,6 @@ class FakeDataSource : ReminderDataSource {
         if (isError) {
 //here we return a test exception for any error handling if there was data or not
             return Result.Error("TEST EXCEPTION")
-            // return Result.Success(emptyList())
 
         }
 //HERE WE RETURN SUCCESS
