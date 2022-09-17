@@ -8,15 +8,15 @@ import java.util.LinkedHashMap
 class FakeDataSource : ReminderDataSource {
 
 
-    private var isempty = false
+    private var isError = false
     fun setReturnEmpty(value: Boolean) {
-        isempty = value
+        isError = value
     }
 
     private val fakeData: LinkedHashMap<String, ReminderDTO> = LinkedHashMap()
 //Return the reminders
     override suspend fun getReminders(): Result<List<ReminderDTO>> {
-        if (isempty) {
+        if (isError) {
 //here we return a test exception for any error handling if there was data or not
             return Result.Error("TEST EXCEPTION")
             // return Result.Success(emptyList())
@@ -31,7 +31,7 @@ class FakeDataSource : ReminderDataSource {
     }
 //return the reminder with the id
     override suspend fun getReminder(id: String): Result<ReminderDTO> {
-        if (isempty) {
+        if (isError) {
             return Result.Error("An unknown error occurred!")
         }
         val reminder = fakeData[id]
