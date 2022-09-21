@@ -7,16 +7,19 @@ import java.util.LinkedHashMap
 //Use FakeDataSource that acts as a test double to the LocalDataSource
 class FakeDataSource : ReminderDataSource {
 
-
-    private var isError = false
-    fun setReturnEmpty(value: Boolean) {
-        isError = value
+// ITS NAME IS shouldReturnError last time it was isEmpty as it was returning an empty list and that was wrong so i was in a hurry so i named it isError
+//its used in the condition which we excpect an error from the FakeDataSource as a Error Handling method
+    private var shouldReturnError = false
+    // i forgot to change setReturnEmpty to setReturnError as previous i was returning an empty list but its used for error handling anyways if the repo is empty or not 
+    fun setReturnError(value: Boolean) {
+        //setReturnError function is used to make the fakedatasource return errors and to check it as its implemented in the ReminderListViewModelTest Class ROW NO. 83
+        shouldReturnError = value
     }
 
     private val fakeData: LinkedHashMap<String, ReminderDTO> = LinkedHashMap()
 //Return the reminders
     override suspend fun getReminders(): Result<List<ReminderDTO>> {
-        if (isError) {
+        if (shouldReturnError) {
 //here we return a test exception for any error handling if there was data or not
             return Result.Error("TEST EXCEPTION")
 
@@ -30,7 +33,7 @@ class FakeDataSource : ReminderDataSource {
     }
 //return the reminder with the id
     override suspend fun getReminder(id: String): Result<ReminderDTO> {
-        if (isError) {
+        if (shouldReturnError) {
             return Result.Error("An unknown error occurred!")
         }
         val reminder = fakeData[id]
