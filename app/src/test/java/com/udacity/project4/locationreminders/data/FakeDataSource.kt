@@ -6,7 +6,7 @@ import java.util.LinkedHashMap
 
 //Use FakeDataSource that acts as a test double to the LocalDataSource
 class FakeDataSource : ReminderDataSource {
-  //  "Why should we handle errors" , ans:After throwing an exception, an exception handler must be found to handle the exception, or the app will terminate thats why we should handle errors
+  //  "Why should we handle errors" , ans:After throwing an exception, an exception handler must be found to handle the exception, or the app will terminate thats why we should handle errors for any unknown error
 
 // ITS NAME IS shouldReturnError last time it was isEmpty as it was returning an empty list and that was wrong so i was in a hurry so i named it isError
 //its used in the condition which we excpect an error from the FakeDataSource as a Error Handling method
